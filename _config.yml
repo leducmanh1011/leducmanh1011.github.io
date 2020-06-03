@@ -1,4 +1,4 @@
-title: Your awesome title
+title: ManhLD Blog - Hello bro
 author: Lê Đức Mạnh
 email: leducmanh101198@gmail.com
 description: > # this means to ignore newlines until "show_exerpts:"
@@ -12,8 +12,8 @@ show_excerpts: true # set to true to show excerpts on the homepage
 sass:
   sass_dir: _sass
 plainwhite:
-  name: Adam Denisov
-  tagline: Developer. Designer
+  name: Lê Đức Mạnh
+  tagline: Developer
   date_format: "%b %-d, %Y"
   sitemap: true # set to true to generate sitemap.xml content
   search: true # set to true to enable searchbar
@@ -21,9 +21,9 @@ plainwhite:
 
   # generate social links in footer
   social_links:
-    twitter: thelehhman
-    github:  thelehhman
-    linkedIn: in/thelehhman
+    facebook: ldm.1011
+    github:  leducmanh1011
+    instagram: lleducmanh
     rss: rss
     # dribbble: jekyll
     # flickr:   jekyll
