@@ -1,0 +1,176 @@
+I"+9<p>Hi các bạn, ở bài viết trước mình đã giới thiệt về RESTful API là gì rồi, hôm trước thì mình cũng được tham gia một buổi sharing kiến thức về cách build base api cho dự án. Vậy thì để tiếp nối bài viết trước hôm nay mình sẽ thử xây dựng một app RESTful API với Ruby on Rails.
+Bài viết này do quá trình mình làm việc, học tập cộng với kiến thức tham khảo được muốn chia sẽ tới các bạn. Thanks you vì đã xem ❤️</p>
+
+<h2 id="lời-nói-đầu">Lời nói đầu</h2>
+
+<p>Ở phiên bản Rails 5, thì gem rails-api đã được tích hợp vào phần core của Rails, vì vậy chúng ta có thể khởi tạo API trong Rails 1 cách dễ dàng và nhanh chóng. Trong bài viết này mình sẽ hướng dẫn cơ bản cho các bạn cách để tạo một API đơn giản, step by step trong Rails 5. Bài viết của mình có những mục sau:</p>
+
+<ul>
+  <li>Chuẩn bị môi trường</li>
+  <li>Tạo project API trong rails 5</li>
+  <li>Add Rspec vào project</li>
+  <li>Xây dựng API</li>
+  <li>Serializing API Output</li>
+  <li>Enabling CORS</li>
+  <li>Phiên bản API</li>
+  <li>Authentication API</li>
+  <li>Viết document cho API sử dụng Swagger UI</li>
+</ul>
+
+<h2 id="chuẩn-bị-môi-trường">Chuẩn bị môi trường</h2>
+
+<p>Các bạn hãy setup môi trường local nhé, có thể tham khảo list sau của mình. ^^</p>
+
+<ul>
+  <li>Ruby 2.6.3</li>
+  <li>Rails 5.2.4.2</li>
+</ul>
+
+<h2 id="tạo-project-api-trong-rails-5">Tạo project API trong rails 5</h2>
+
+<p>Đầu tiên, hãy chắc chắn rằng bạn đã setup xong step 1 (chuẩn bị môi trường) cài phiên bản Ruby 2.2.2 trở lên và Rails version 5. :D</p>
+
+<p>Để tạo một API trong rails chỉ cần thêm mode –api phía sau câu lệnh khởi tạo project mới trong Rails.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rails</span> <span class="n">new</span> <span class="n">my_project</span> <span class="o">--</span><span class="n">api</span>
+</code></pre></div></div>
+
+<p>Tiếp theo chúng ta chạy lệnh bundle để thực hiện cài đặt các gem mặc định và tiến hành cài đặt database trong thư mục chứa project.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bundle</span> <span class="n">install</span>
+</code></pre></div></div>
+
+<h2 id="add-rspec-vào-project">Add Rspec vào project</h2>
+
+<p>Sau khi cài đặt xong project, chúng ta tiến hành cài đặt RSpec để tiến hành việc testing cho API. Lý do tại sao chúng ta tiến hành cài đặt RSpec đầu tiên vì nó sẽ giúp chúng ta tiết kiệm thời gian bằng cách sử dụng RSpec, thì nó sẽ tiến hành tạo tự động các file test controller và model khi chúng ta tạo các model, controller</p>
+
+<p>Để cài đặt, trong Gemfile.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">group</span> <span class="ss">:development</span><span class="p">,</span> <span class="ss">:test</span> <span class="k">do</span>
+    <span class="n">gem</span> <span class="s2">"rspec-rails"</span>
+    <span class="n">gem</span> <span class="s2">"factory_girl_rails"</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Sau đó chạy bundle install.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bundle</span> <span class="n">install</span>
+</code></pre></div></div>
+
+<h2 id="xây-dựng-api">Xây dựng API</h2>
+
+<p>Sau khi add Rpsec vào project thì bước tiếp theo, mình sẽ xây dựng API, cụ thể mình sẽ xây dựng API CRUD my blog. Sử dụng câu lệnh scaffold để khởi tạo nhanh model và controller tương ứng.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rails</span> <span class="n">g</span> <span class="n">scaffold</span> <span class="no">MyBlog</span> <span class="n">title</span> <span class="n">content</span> <span class="n">description</span>
+</code></pre></div></div>
+<p>Nó sẽ sinh ra các file có cấu trúc như sau:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">invoke</span>  <span class="n">active_record</span>
+<span class="n">create</span>    <span class="n">db</span><span class="o">/</span><span class="n">migrate</span><span class="o">/</span><span class="mi">20200607162113</span><span class="n">_create_my_blogs</span><span class="p">.</span><span class="nf">rb</span>
+<span class="n">create</span>    <span class="n">app</span><span class="o">/</span><span class="n">models</span><span class="o">/</span><span class="n">my_blog</span><span class="p">.</span><span class="nf">rb</span>
+<span class="n">invoke</span>    <span class="n">test_unit</span>
+<span class="n">create</span>      <span class="nb">test</span><span class="o">/</span><span class="n">models</span><span class="o">/</span><span class="n">my_blog_test</span><span class="p">.</span><span class="nf">rb</span>
+<span class="n">create</span>      <span class="nb">test</span><span class="o">/</span><span class="n">fixtures</span><span class="o">/</span><span class="n">my_blogs</span><span class="p">.</span><span class="nf">yml</span>
+<span class="n">invoke</span>  <span class="n">resource_route</span>
+<span class="n">route</span>    <span class="n">resources</span> <span class="ss">:my_blogs</span>
+<span class="n">invoke</span>  <span class="n">scaffold_controller</span>
+<span class="n">create</span>    <span class="n">app</span><span class="o">/</span><span class="n">controllers</span><span class="o">/</span><span class="n">my_blogs_controller</span><span class="p">.</span><span class="nf">rb</span>
+<span class="n">invoke</span>    <span class="n">test_unit</span>
+<span class="n">create</span>      <span class="nb">test</span><span class="o">/</span><span class="n">controllers</span><span class="o">/</span><span class="n">my_blogs_controller_test</span><span class="p">.</span><span class="nf">rb</span>
+
+</code></pre></div></div>
+<p>Vì khi khởi tạo project với mode –api nên sẽ không có thư mục view tạo ra, các bạn chú ý.
+Tiếp theo các bạn chạy migrate database và run sever nhé.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rails</span> <span class="n">db</span><span class="ss">:migrate</span>
+<span class="n">rails</span> <span class="n">s</span>
+</code></pre></div></div>
+
+<p>API của chúng ta bây giờ đã chạy ở địa chỉ https://localhost:3000. Tuy nhiên đây chưa phải là điều quan trọng nhất, vì tất cả chỉ dừng ở mức cơ bản, và chúng ta còn nhiều việc phải làm để tạo thành một API hoàn chỉnh.</p>
+
+<h2 id="serializing-api-output-với-fast-json-api">Serializing API Output Với Fast JSON API</h2>
+
+<p>Trong Gemfile add line:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gem</span> <span class="s2">"fast_jsonapi"</span>
+</code></pre></div></div>
+
+<p>Chạy bundle install để cài đặt gem. Sau đó mình sẽ tạo class serializer tương ứng với model, cụ thể ở đây là MyBlog.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rails</span> <span class="n">g</span> <span class="n">serializer</span> <span class="no">MyBlog</span> <span class="n">title</span> <span class="n">content</span> <span class="n">description</span>
+</code></pre></div></div>
+
+<p>Kết quả:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">create</span>  <span class="n">app</span><span class="o">/</span><span class="n">serializers</span><span class="o">/</span><span class="n">my_blog_serializer</span><span class="p">.</span><span class="nf">rb</span>
+</code></pre></div></div>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">MyBlogSerializer</span>
+  <span class="kp">include</span> <span class="no">FastJsonapi</span><span class="o">::</span><span class="no">ObjectSerializer</span>
+  <span class="n">attributes</span> <span class="ss">:title</span><span class="p">,</span> <span class="ss">:content</span><span class="p">,</span> <span class="ss">:description</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Mỗi class serializer sẽ ánh xạ với một model trong database, để có thể chuyển dữ liệu từ database sang kiểu JSON để trả về cho phía front end sử dụng</p>
+
+<h2 id="enabling-cors">Enabling CORS</h2>
+
+<p>CORS là viết tắt của Cross-origin resource sharing, là một cơ chế đặc biệt cho phép resource đặt tại một domain này có thể được request từ một domain khác với domain đó, nghĩa là làm sao để có thể gửi và nhận dữ liệu giữa 2 server với nhau. Trong trường hợp bạn muốn public API của mình, thì enable CORS là việc cần làm nếu như bạn không muốn sử dụng JSONP, và hầu hết các trình duyệt hiện nay đều đã hỗ trợ CORS.</p>
+
+<p>Để làm điều đó trong API của chúng ta, thì chỉ việc cài đặt gem rack-cors vào Gemfile:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gem</span> <span class="s2">"rack-cors"</span>
+</code></pre></div></div>
+
+<p>Chạy cập nhật bundle và thêm vào vài dòng code như ở dưới vào file config/application.rb. Ở ví dụ này, nó sẽ cho phép thực hiện các request như GET, POST hoặc bất cứ OPTIONS request nào khác từ bất kì đâu.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">YourApp</span>
+    <span class="k">class</span> <span class="nc">Application</span> <span class="o">&lt;</span> <span class="no">Rails</span><span class="o">::</span><span class="no">Application</span>
+    <span class="c1"># ...</span>
+        <span class="n">config</span><span class="p">.</span><span class="nf">middleware</span><span class="p">.</span><span class="nf">insert_before</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"Rack::Cors"</span> <span class="k">do</span>
+            <span class="n">allow</span> <span class="k">do</span>
+                <span class="n">origins</span> <span class="p">\</span><span class="s1">'*\'
+                resource \'*\'</span><span class="p">,</span> <span class="ss">headers: :any</span><span class="p">,</span> <span class="ss">:methods</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="ss">:get</span><span class="p">,</span> <span class="ss">:post</span><span class="p">,</span> <span class="ss">:options</span><span class="p">]</span>
+            <span class="k">end</span>
+        <span class="k">end</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<h2 id="quản-lí-version-của-api">Quản lí version của api</h2>
+
+<p>Ở bài viết trước mình cũng đã nói qua về việc quản lí version cho API rồi.</p>
+
+<p>Điều này sẽ giúp hệ thống sau khi nâng cấp lên version mới vẫn hộ trợ các api của version cũ, cũng như giúp việc bảo trì, sửa chữa dễ dàng hơn.</p>
+
+<p>Có nhiều cách để chia version cho API, mình thường hay dùng như thế này =))</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">routes</span><span class="p">.</span><span class="nf">draw</span> <span class="k">do</span>
+  <span class="n">root</span> <span class="s2">"application#root"</span>
+
+  <span class="n">namespace</span> <span class="ss">:api</span> <span class="k">do</span>
+    <span class="n">namespace</span> <span class="ss">:v1</span><span class="p">,</span> <span class="ss">defaults: </span><span class="p">{</span><span class="ss">format: :json</span><span class="p">}</span> <span class="k">do</span>
+      <span class="n">resources</span> <span class="ss">:my_blogs</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Lúc này chạy rails routes để xem end point như thế nào nhé. Đây là các API của mình.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">GET</span>    <span class="sr">/api/</span><span class="n">v1</span><span class="o">/</span><span class="n">my_blogs</span>
+<span class="no">POST</span>   <span class="sr">/api/</span><span class="n">v1</span><span class="o">/</span><span class="n">my_blogs</span>
+<span class="no">GET</span>    <span class="sr">/api/</span><span class="n">v1</span><span class="o">/</span><span class="n">my_blogs</span><span class="o">/</span><span class="ss">:id</span>
+<span class="no">PATCH</span>  <span class="sr">/api/</span><span class="n">v1</span><span class="o">/</span><span class="n">my_blogs</span><span class="o">/</span><span class="ss">:id</span>
+<span class="no">PUT</span>    <span class="sr">/api/</span><span class="n">v1</span><span class="o">/</span><span class="n">my_blogs</span><span class="o">/</span><span class="ss">:id</span>
+<span class="no">DELETE</span> <span class="sr">/api/</span><span class="n">v1</span><span class="o">/</span><span class="n">my_blogs</span><span class="o">/</span><span class="ss">:id</span>
+</code></pre></div></div>
+
+<h2 id="cuối-cùng">Cuối cùng</h2>
+
+<p>Vì bài viết hơi dài, nên mình xin phép sẽ để dành Authentication API và Viết document cho API sử dụng Swagger UI vào bài viết tiếp theo. ^^</p>
+
+<p>Cảm ơn vì các bạn đã đọc đến đây, hi vọng sẽ giúp ít cho các bạn mới tìm hiểu về RESTful API. ❤️ 🙇</p>
+
+<p>source: Viblo, Google, Tech Blog</p>
+:ET

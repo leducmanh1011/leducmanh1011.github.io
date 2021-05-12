@@ -1,26 +1,28 @@
 #-------------------------------
 # General Site Settings
-title: Zolan
+title: Duc Manh IT Blogs - ROR developer
 logo: logo.svg # You can add own logo.
-description: Zolan is modern minimal theme for Jekyll
+favicon: logo.svg
+description: Code is my life
 
 
 #-------------------------------
 # Author Settings
 author:
-  name: Alex Rodriguez
+  name: Manh Duc Le
   image: 01.jpg
-  say-hello: Hello, I’m <strong>Alex Rodriguez</strong>
-  bio: Designs, talks, and writes about <strong>web</strong>, <strong>ethics</strong>, <strong>privacy</strong>, and dev. I share design tutorials, free resources and inspiration. Loves <a href="#">music</a> & riding his bicycle.
+  say-hello: Hello, I’m <strong>Manh Le Duc</strong>
+  bio: Mình là một Web developer mới nhú, cụ thể là mình code Ruby on Rails, ReactJS. Sau một thời gian đi làm culy, thì mình cũng tích lũy được một số kiến thức muốn chia sẽ với mọi người.
+  ok: Designs, talks, and writes about <strong>web</strong>, <strong>ethics</strong>, <strong>privacy</strong>, and dev. I share design tutorials, free resources and inspiration. Loves <a href="#">music</a> & riding his bicycle.
 
 
 #-------------------------------
 # Contact links
-twitter: https://twitter.com/ # Add your Twitter handle
-facebook: https://facebook.com/ # Add your Facebook handle
-dribbble: https://dribbble.com/ # Add your Dribbble handle
-instagram: https://instagram.com/ # Add your Instagram handle
-pinterest: https://pinterest.com/ # Add your Pinterest handle
+twitter: https://twitter.com/ld_manh # Add your Twitter handle
+facebook: https://facebook.com/ldm.1011
+instagram: https://instagram.com/lleducmanh
+telegram: aa
+linkedin: https://www.linkedin.com/in/le-duc-manh-16a8b31b1/
 
 
 #-------------------------------

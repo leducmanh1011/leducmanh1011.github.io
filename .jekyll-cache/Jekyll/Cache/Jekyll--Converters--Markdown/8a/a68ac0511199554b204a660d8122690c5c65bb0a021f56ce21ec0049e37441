@@ -1,0 +1,190 @@
+I"�O<p>Không đọc hay đọc không hay, không vui cũng đừng buông lời cay đắng :v</p>
+
+<h2 id="lời-nói-đầu">Lời nói đầu</h2>
+
+<p>Hi các bạn, vừa rồi mình vừa tham gia phát triển tính năng mới của một dự án. Và dự án đó áp dụng thư viện khá hay mà mình muốn chia sẽ trong bài viết này. Đó là Lodash! Hãy cùng mình tìm hiểu thư viện Lodash là gì? Và các fuction cơ bản của nó nhé.</p>
+
+<p>Bắt đầu thôiiiiiiiiiii</p>
+
+<h2 id="giới-thiệu-về-thư-viện-lodash">Giới thiệu về thư viện Lodash</h2>
+
+<p>Lodash là phiên bản mở rộng hơn của thư viện underscore, với nhiều chức năng và cho hiệu năng cao hơn. Các chức năng của Lodash được chia ra làm các nhóm: nhóm xử lý Array, nhóm xử lý Object, nhóm xử lý Date, Function, Lang, Math, Number,…</p>
+
+<p>Vì phạm vi có hạn nên trong bài viết này mình chỉ giới thiệu các fuction cơ bản hay dùng. Các bạn có thể tìm hiểu thêm <a href="https://lodash.com/docs">ở đây</a>.</p>
+
+<h2 id="các-fuction-cơ-bản-của-thư-viện-lodash">Các fuction cơ bản của thư viện Lodash</h2>
+
+<h3 id="các-functions-xử-lý-string">Các functions xử lý String</h3>
+
+<p><code class="language-plaintext highlighter-rouge">.camelCase</code>: nhận argument là string và trả về string đã format theo dạng camel</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">_</span><span class="p">.</span><span class="nx">camelCase</span><span class="p">(</span><span class="dl">'</span><span class="s1">Duc Manh</span><span class="dl">'</span><span class="p">);</span>
+<span class="c1">// =&gt; 'ducManh'</span>
+
+<span class="nx">_</span><span class="p">.</span><span class="nx">camelCase</span><span class="p">(</span><span class="dl">'</span><span class="s1">--duc-manh--</span><span class="dl">'</span><span class="p">);</span>
+<span class="c1">// =&gt; 'ducManh'</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">_.split</code>: tách 1 string theo mẫu (pattern) hay theo ký tự về thành mảng các ký tự.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">'</span><span class="s1">a-b-c</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">-</span><span class="dl">'</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="c1">// =&gt; ['a', 'b']</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">_.pad</code>, <code class="language-plaintext highlighter-rouge">_.padLeft</code>, <code class="language-plaintext highlighter-rouge">_.padRight</code>: Canh giữa, trái, phải string bằng cách thêm khoảng trắng vào string.</p>
+
+<p><code class="language-plaintext highlighter-rouge">_.trim</code>, <code class="language-plaintext highlighter-rouge">_.trimEnd</code>, <code class="language-plaintext highlighter-rouge">_.trimStart</code>: loại bỏ khoảng trắng (white space) hoặc ký tự xác định nào đó ở 2 đầu, ở cuối hoặc ở đầu.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">_</span><span class="p">.</span><span class="nx">trim</span><span class="p">(</span><span class="dl">'</span><span class="s1">  ldm  </span><span class="dl">'</span><span class="p">);</span>
+<span class="c1">// =&gt; 'ldm'</span>
+
+<span class="nx">_</span><span class="p">.</span><span class="nx">trimStart</span><span class="p">(</span><span class="dl">'</span><span class="s1">  ldm  </span><span class="dl">'</span><span class="p">);</span>
+<span class="c1">// =&gt; 'ldm  '</span>
+
+<span class="nx">_</span><span class="p">.</span><span class="nx">trimEnd</span><span class="p">(</span><span class="dl">'</span><span class="s1">-_-ldm-_-</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">_-</span><span class="dl">'</span><span class="p">);</span>
+<span class="c1">// =&gt; '-_-ldm'</span>
+</code></pre></div></div>
+
+<h3 id="các-functions-xử-lý-array">Các functions xử lý Array</h3>
+
+<p><code class="language-plaintext highlighter-rouge">_.concat</code>: Tạo một array mới bằng cách nối các tham số lại với nhau.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="kd">var</span> <span class="nx">other</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nx">array</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="p">[[</span><span class="mi">4</span><span class="p">]]);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">other</span><span class="p">);</span>
+<span class="c1">// =&gt; [1, 2, 3, [4]]</span>
+
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">_.difference(array, [values])</code>: lọc ra những phần tử có mặt trong array mà không có mặt trong các đối số còn lại (values).</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">_</span><span class="p">.</span><span class="nx">difference</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]);</span>
+<span class="c1">// =&gt; [1]</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">_.findIndex</code>: tìm kiếm phần tử trong mảng và trả về index của phần tử đó trong mảng, trả về -1 nếu không tìm thấy.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">users</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span> <span class="dl">'</span><span class="s1">user</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">barney</span><span class="dl">'</span><span class="p">,</span>  <span class="dl">'</span><span class="s1">active</span><span class="dl">'</span><span class="p">:</span> <span class="kc">false</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="dl">'</span><span class="s1">user</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">fred</span><span class="dl">'</span><span class="p">,</span>    <span class="dl">'</span><span class="s1">active</span><span class="dl">'</span><span class="p">:</span> <span class="kc">false</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="dl">'</span><span class="s1">user</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">pebbles</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">active</span><span class="dl">'</span><span class="p">:</span> <span class="kc">true</span> <span class="p">}</span>
+<span class="p">];</span>
+
+<span class="nx">_</span><span class="p">.</span><span class="nx">findIndex</span><span class="p">(</span><span class="nx">users</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">o</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">o</span><span class="p">.</span><span class="nx">user</span> <span class="o">==</span> <span class="dl">'</span><span class="s1">barney</span><span class="dl">'</span><span class="p">;</span> <span class="p">});</span>
+<span class="c1">// =&gt; 0</span>
+
+<span class="nx">_</span><span class="p">.</span><span class="nx">findIndex</span><span class="p">(</span><span class="nx">users</span><span class="p">,</span> <span class="p">{</span> <span class="dl">'</span><span class="s1">user</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">fred</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">active</span><span class="dl">'</span><span class="p">:</span> <span class="kc">false</span> <span class="p">});</span>
+<span class="c1">// =&gt; 1</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">_.flatten</code>, <code class="language-plaintext highlighter-rouge">_.flattenDeep</code>: convert mảng n chiều về (n – 1) chiều với <code class="language-plaintext highlighter-rouge">_.flatten</code> và 1 chiều với <code class="language-plaintext highlighter-rouge">_.flattenDeep</code></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">_</span><span class="p">.</span><span class="nx">flatten</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="mi">4</span><span class="p">]],</span> <span class="mi">5</span><span class="p">]]);</span>
+<span class="c1">// =&gt; [1, 2, [3, [4]], 5]</span>
+
+<span class="nx">_</span><span class="p">.</span><span class="nx">flattenDeep</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="mi">4</span><span class="p">]],</span> <span class="mi">5</span><span class="p">]]);</span>
+<span class="c1">// =&gt; [1, 2, 3, 4, 5]</span>
+
+</code></pre></div></div>
+
+<h3 id="các-functions-xử-lý-object">Các functions xử lý Object</h3>
+
+<p><code class="language-plaintext highlighter-rouge">_.keys</code>: Trả về tên toàn bộ key của 1 object <code class="language-plaintext highlighter-rouge">_.values</code>: Trả về tên toàn bộ value của 1 object.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">object</span> <span class="o">=</span> <span class="p">{</span> <span class="dl">'</span><span class="s1">user</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">fred</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">age</span><span class="dl">'</span><span class="p">:</span> <span class="mi">40</span> <span class="p">};</span>
+<span class="nx">_</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">object</span><span class="p">);</span>
+<span class="c1">// =&gt; ["user", "age"]</span>
+
+<span class="nx">_</span><span class="p">.</span><span class="nx">values</span><span class="p">(</span><span class="nx">object</span><span class="p">);</span>
+<span class="c1">// =&gt; ["fred", 40]</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">_.pick</code>: Chỉ lấy 1 thuộc tính của object.</p>
+
+<p><code class="language-plaintext highlighter-rouge">_.omit</code>: Bỏ 1 thuộc tính của object, lấy toàn bộ những thuộc tính còn lại.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">object</span> <span class="o">=</span> <span class="p">{</span> <span class="dl">'</span><span class="s1">user</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">fred</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">age</span><span class="dl">'</span><span class="p">:</span> <span class="mi">40</span> <span class="p">};</span>
+
+<span class="nx">_</span><span class="p">.</span><span class="nx">pick</span><span class="p">(</span><span class="nx">object</span><span class="p">,</span> <span class="dl">'</span><span class="s1">user</span><span class="dl">'</span><span class="p">);</span>
+<span class="c1">// =&gt; { 'user': 'fred' }</span>
+
+<span class="nx">_</span><span class="p">.</span><span class="nx">omit</span><span class="p">(</span><span class="nx">object</span><span class="p">,</span> <span class="dl">'</span><span class="s1">age</span><span class="dl">'</span><span class="p">);</span>
+<span class="c1">// =&gt; { 'user': 'fred' }</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">_.invert</code>: Đảo ngược key-value của 1 object</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">object</span> <span class="o">=</span> <span class="p">{</span> <span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="dl">'</span><span class="s1">b</span><span class="dl">'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="dl">'</span><span class="s1">c</span><span class="dl">'</span><span class="p">:</span> <span class="mi">1</span> <span class="p">};</span>
+
+<span class="nx">_</span><span class="p">.</span><span class="nx">invert</span><span class="p">(</span><span class="nx">object</span><span class="p">);</span>
+<span class="c1">// =&gt; { '1': 'c', '2': 'b' }</span>
+</code></pre></div></div>
+
+<h3 id="một-số-ultility-function">Một số ultility function</h3>
+
+<p><code class="language-plaintext highlighter-rouge">_.isNil</code>, <code class="language-plaintext highlighter-rouge">_.isNull</code>, <code class="language-plaintext highlighter-rouge">_.isUndefined</code>, <code class="language-plaintext highlighter-rouge">_.isNumber</code>, <code class="language-plaintext highlighter-rouge">_.isObject</code>, <code class="language-plaintext highlighter-rouge">_.isInteger</code> : là các function kiểm tra 1 giá trị có null hay undefined hay có phải là kiểu số hay object hay không</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">_</span><span class="p">.</span><span class="nx">isNull</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+<span class="c1">// → true</span>
+
+<span class="nx">_</span><span class="p">.</span><span class="nx">isFunction</span><span class="p">(</span><span class="nx">_</span><span class="p">);</span>
+<span class="c1">// → true</span>
+<span class="nx">_</span><span class="p">.</span><span class="nx">isFunction</span><span class="p">(</span><span class="sr">/abc/</span><span class="p">);</span>
+<span class="c1">// → false</span>
+
+<span class="nx">_</span><span class="p">.</span><span class="nx">isNumber</span><span class="p">(</span><span class="mf">8.4</span><span class="p">);</span>
+<span class="c1">// → true</span>
+<span class="nx">_</span><span class="p">.</span><span class="nx">isNumber</span><span class="p">(</span><span class="kc">NaN</span><span class="p">);</span>
+<span class="c1">// → true</span>
+<span class="nx">_</span><span class="p">.</span><span class="nx">isNumber</span><span class="p">(</span><span class="dl">'</span><span class="s1">8.4</span><span class="dl">'</span><span class="p">);</span>
+<span class="c1">// → false</span>
+
+<span class="nx">_</span><span class="p">.</span><span class="nx">isObject</span><span class="p">({});</span>
+<span class="c1">// → true</span>
+<span class="nx">_</span><span class="p">.</span><span class="nx">isObject</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]);</span>
+<span class="c1">// → true</span>
+<span class="nx">_</span><span class="p">.</span><span class="nx">isObject</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="c1">// → false</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">_.isEqual</code>: function này so sánh 2 array, hoặc 2 object. Function này sử dung <code class="language-plaintext highlighter-rouge">deep comparision</code>, so sánh từng field của 2 object, hoặc từng phần tử của 2 array.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">object</span> <span class="o">=</span> <span class="p">{</span> <span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">:</span> <span class="mi">1</span> <span class="p">};</span>
+<span class="kd">var</span> <span class="nx">other</span> <span class="o">=</span> <span class="p">{</span> <span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">:</span> <span class="mi">1</span> <span class="p">};</span>
+
+<span class="nx">_</span><span class="p">.</span><span class="nx">isEqual</span><span class="p">(</span><span class="nx">object</span><span class="p">,</span> <span class="nx">other</span><span class="p">);</span>
+<span class="c1">// =&gt; true</span>
+
+<span class="nx">object</span> <span class="o">===</span> <span class="nx">other</span><span class="p">;</span>
+<span class="c1">// =&gt; false</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">_.isEmpty</code>: Checks if value is an empty object, collection, map, or set. Kiểm tra 1 giá trị có là object rỗng hay không. Một object được coi là rỗng nếu nó không có thuộc tính enumerable string keyed.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">_</span><span class="p">.</span><span class="nx">isEmpty</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+<span class="c1">// =&gt; true</span>
+
+<span class="nx">_</span><span class="p">.</span><span class="nx">isEmpty</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="c1">// =&gt; true</span>
+
+<span class="nx">_</span><span class="p">.</span><span class="nx">isEmpty</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="c1">// =&gt; true</span>
+
+<span class="nx">_</span><span class="p">.</span><span class="nx">isEmpty</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]);</span>
+<span class="c1">// =&gt; false</span>
+
+<span class="nx">_</span><span class="p">.</span><span class="nx">isEmpty</span><span class="p">({</span> <span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">:</span> <span class="mi">1</span> <span class="p">});</span>
+<span class="c1">// =&gt; false</span>
+</code></pre></div></div>
+
+<h2 id="cuối-cùng">Cuối cùng</h2>
+
+<p>Bài viết của mình đến đây là kết thúc. Các bạn thử dùng thư viện này xem nhé, trong quá trình sử dụng các bạn có thể tìm hiểu thêm.</p>
+
+<p>Hy vọng giúp các bạn code JS xịn xò hơn ^^</p>
+
+<p>Thanks for reading. &lt;3</p>
+
+<p>Sources: Viblo, TopDev, Lodash Documentation, Toidicodedao</p>
+:ET

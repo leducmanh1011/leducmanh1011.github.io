@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Giới thiệu
-permalink: /about/
+title: Bạn bè
+permalink: /friends/
 image: 01.jpg
 ---
 
