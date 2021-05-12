@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "How to build a app RESTful API with Ruby on Rails?"
+title:  "Làm thế nào để xây dựng một ứng dụng RESTful API trong Ruby on Rails?"
 date:   2020-06-06 19:03:36 +0530
 image:  post_2/restful-json-api-in-ruby-on-rails.jpg
 tags: RESTful API ROR Ruby

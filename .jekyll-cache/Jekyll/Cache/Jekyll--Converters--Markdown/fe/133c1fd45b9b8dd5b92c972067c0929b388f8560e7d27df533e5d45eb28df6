@@ -1,0 +1,258 @@
+I"Z<h2 id="lời-nói-đầu">Lời nói đầu</h2>
+<p>Hi guys, lại là mình đây. Mình đang bắt đầu học React, cho nên có tìm hiểu và viết cái blog này để vừa học cũng như chia sẽ cho mọi người. Đọc cho vui và có thể giúp ích phần nào đó cho những bạn mới học React như mình cũng nên, còn không thì có gì sai sót bỏ qua nhé =))</p>
+
+<p>React đang nhanh chóng trở thành bộ thư viện JavaScript phổ biến, so với một số lượng không ít các thư viện và framework JavaScript hiện nay thì React nổi trội ở tính đơn giản và hiệu quả và thích hợp để build các ứng dụng UI phức tạp.</p>
+
+<p>Vậy React là gì, sử dụng như thế nào và tại sao lại sử dụng react? Trong phạm vi bài viết này chúng ta sẽ cùng nhau tìm hiểu về những điều đó nhé :D</p>
+
+<p>Bài có tham khảo, tổng hợp từ bài viết khác và viết chỉ ngắn gọc, chưa tìm hiểu sâu. Nếu các bạn muốn tìm hiểu thêm thì vào <a href="https://reactjs.org/docs">docs</a> của React đọc thêm nhé!</p>
+
+<h2 id="tìm-hiểu-về-reactjs">Tìm hiểu về ReactJS</h2>
+
+<h3 id="vậy-thì-react-là-gì">Vậy thì React là gì?</h3>
+
+<p>`
+React is a declarative, efficient, and flexible JavaScript library for building user interfaces. It lets you compose complex UIs from small and isolated pieces of code called “components”.
+`</p>
+
+<p><strong>React</strong> là một thư viện JavaScript linh hoạt, hiệu quả để xây dựng các UI component viết bằng HTML, CSS và JavaScript. Nó cho phép lập trình viên chúng ta xây dựng các UI component phức tạp từ những đoạn code nhỏ và độc lập</p>
+
+<p>Note:</p>
+
+<p>React không phải là một MVC framework như những framework khác, nó chỉ là thư viện của Facebook giúp render ra phần view. Vì thế React sẽ không có phần Model và Controller, mà phải kết hợp với các thư viện khác. React cũng sẽ không có 2-way binding hay là Ajax, …</p>
+
+<p>React cho phép bạn viết JavaScript sử dụng cú pháp được định nghĩa trong tiêu chuẩn ECMAScript 6 (ES6 hay ECMAScript 2015), tuy nhiên một số trình duyệt chưa chấp nhận phiên bản mới này. Babel là một JavaScript compiler giúp biên dịch mã JavaScript viết theo chuẩn ECMAScript 6 về ECMAScript 5.</p>
+
+<h3 id="jsx">JSX</h3>
+
+<p>`
+JSX là 1 phần mở rộng cú pháp giống như XML cho EMCAScript. Nó được khuyến khích dùng trong React.
+`</p>
+
+<p><strong>JSX = Javascript + XML</strong></p>
+
+<p>Ưu điểm mà JSX mang lại:</p>
+
+<ul>
+  <li>Nhanh hơn nhờ việc thực hiện tối ưu hóa trong khi biên dịch mã thành Javascript.</li>
+  <li>An toàn và hầu hết các lỗi có thể bị bắt trong quá trình biên dịch.</li>
+  <li>Giúp bạn viết template dễ dàng và nhanh hơn.</li>
+</ul>
+
+<p>Sử dụng JSX:</p>
+
+<ul>
+  <li>Cú pháp tương đối giống với HTML và có khả năng sử dụng biểu thức logic vào JSX</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">App</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+   <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="p">(</span>
+         <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span> <span class="p">}</span><span class="o">&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+</span>         <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>      <span class="p">);</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Định style sử dụng cú pháp camelCase và tự động thêm px sau giá trị là số của các phần tử</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">App</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+   <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+      <span class="kd">let</span> <span class="nx">myStyle</span> <span class="o">=</span> <span class="p">{</span>
+         <span class="na">fontSize</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+         <span class="na">color</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#FF0000</span><span class="dl">'</span>
+      <span class="p">}</span>
+      <span class="k">return</span> <span class="p">(</span>
+         <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">h1</span> <span class="nx">style</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">myStyle</span> <span class="p">}</span><span class="o">&gt;</span><span class="nx">Header</span><span class="o">&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+</span>         <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>      <span class="p">);</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Viết comment đặt trong cặp dấu { }</li>
+  <li>Tên commponent bắt đầu bằng chữ hoa Uppercase, sử dụng className và htmlFor thay vì class và for.</li>
+  <li>JSX đại diện cho các đối tượng: 2 ví dụ sau đây đều cho kết quả tương tự nhau</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">element</span> <span class="o">=</span> <span class="p">(</span>
+  <span class="o">&lt;</span><span class="nx">h1</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">greeting</span><span class="dl">"</span><span class="o">&gt;</span>
+    <span class="nx">Hello</span><span class="p">,</span> <span class="nx">world</span><span class="o">!</span>
+  <span class="o">&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+</span><span class="p">);</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">element</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span>
+  <span class="dl">'</span><span class="s1">h1</span><span class="dl">'</span><span class="p">,</span>
+  <span class="p">{</span>
+      <span class="na">className</span><span class="p">:</span> <span class="dl">'</span><span class="s1">greeting</span><span class="dl">'</span>
+  <span class="p">},</span>
+  <span class="dl">'</span><span class="s1">Hello, world!</span><span class="dl">'</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="component">Component</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Các component cho phép bạn tách giao diện người dùng thành các thành phần độc lập, có thể tái sử dụng.
+</code></pre></div></div>
+
+<p>Component giống như các hàm Javascript. Chúng chấp nhận đầu vào 1 cách tùy ý (props) và trả về phần tử React xuất hiện trên màn hình.</p>
+
+<h4 id="tạo-component">Tạo component</h4>
+
+<p>Có 2 cách để khởi tạo component là dùng hàm hoặc dùng định nghĩa class.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Use function</span>
+<span class="kd">function</span> <span class="nx">Welcome</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Hello</span><span class="p">,</span> <span class="p">{</span><span class="nx">props</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/h1&gt;</span><span class="err">;
+</span><span class="p">}</span>
+
+<span class="c1">// Or user class</span>
+<span class="kd">class</span> <span class="nx">Welcome</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Hello</span><span class="p">,</span> <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/h1&gt;</span><span class="err">;
+</span>  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Component do người dùng định nghĩa</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">Welcome</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Hello</span><span class="p">,</span> <span class="p">{</span><span class="nx">props</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/h1&gt;</span><span class="err">;
+</span><span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">element</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nx">Welcome</span> <span class="nx">name</span><span class="o">=</span><span class="dl">"</span><span class="s2">ManhLD</span><span class="dl">"</span> <span class="o">/&gt;</span><span class="p">;</span>
+<span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span>
+  <span class="nx">element</span><span class="p">,</span>
+  <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">app</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Gọi ReactDOM.render với phần tử <Welcome name="ManhLD"></Welcome></li>
+  <li>React gọi component Welcome với {name: ‘ManhLD’} như là props</li>
+  <li>Component Welcome trả về kết quả&lt;h1&gt;Hello, ManhLD&lt;/h1&gt;</li>
+  <li>React DOM cập nhật DOM</li>
+</ul>
+
+<h3 id="props-và-state">Props và State</h3>
+
+<p>Props và state là 2 kiểu dữ liệu trong React. State chỉ được thay đổi bên trong bản thân component. Props không bị kiểm soát bởi bản thân component.</p>
+
+<h4 id="props">Props</h4>
+
+<p>Props là viết tắt của properties. Chúng là các giá trị đơn hoặc các đối tượng có chứa 1 tập hợp các giá trị được chuyển đến Component. Nó sử dụng quy ước đặt tên tương tự như các thuộc tính của thẻ HTML.</p>
+
+<p>Props là cách để các component giao tiếp với nhau. Props được truyền từ component cha.</p>
+
+<p>Props chỉ để đọc. Cho dù bạn khai báo component dưới dạng hàm hay class thì nó vẫn không bao giờ có thể sửa đổi props của chính nó.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">text</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">React App</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nx">Form</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+    <span class="nx">render</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="nx">h3</span><span class="o">&gt;</span>
+                    <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">text</span> <span class="p">}</span>
+                <span class="o">&lt;</span><span class="sr">/h3</span><span class="err">&gt;
+</span>            <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nx">App</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+    <span class="nx">render</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span>
+                    <span class="nx">Welcome</span> <span class="nx">to</span> <span class="nx">my</span> <span class="nx">app</span>
+                <span class="o">&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+</span>                <span class="o">&lt;</span><span class="nx">Form</span> <span class="nx">text</span><span class="o">=</span><span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">text</span> <span class="p">}</span> <span class="sr">/</span><span class="err">&gt;
+</span>            <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">App</span> <span class="nx">text</span><span class="o">=</span><span class="p">{</span> <span class="nx">text</span> <span class="p">}</span> <span class="sr">/&gt;</span><span class="err">,
+</span>    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">root</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li>props được truyền vào trong App trong phương thức React.render()</li>
+  <li>App component truy xuất biến text thông qua lời gọi this.props.text</li>
+  <li>Form component hiển thị dữ liệu vào thẻ &lt;h3&gt;</li>
+</ul>
+
+<h4 id="state">State</h4>
+
+<p>Khác với props là bất biến thì state có thể thay đổi. State được quản lý chỉ bởi duy nhất 1 component, nó cũng không thể truyền xuống cho component con.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">SearchBar</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+    <span class="kd">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span> <span class="na">term</span><span class="p">:</span> <span class="dl">''</span> <span class="p">};</span>
+    <span class="p">}</span>
+    <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">search-bar</span><span class="dl">"</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="nx">input</span>
+                    <span class="nx">value</span><span class="o">=</span><span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">term</span> <span class="p">}</span>
+                    <span class="nx">onChange</span><span class="o">=</span><span class="p">{(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">onInputChange</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">)}</span> <span class="sr">/</span><span class="err">&gt;
+</span>                <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
+                    <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">term</span> <span class="p">}</span>
+                <span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>            <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>        <span class="p">);</span>
+    <span class="p">}</span>
+    <span class="nx">onInputChange</span><span class="p">(</span><span class="nx">term</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span> <span class="nx">term</span> <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">SearchBar</span> <span class="o">/&gt;</span><span class="p">,</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">root</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<h4 id="lifecycle">Lifecycle</h4>
+
+<ul>
+  <li><strong>componentDidMount</strong>: thực hiện chỉ 1 lần sau khi render ở phía client. Đây là nơi yêu cầu AJAX, cập nhật DOM hoặc cập nhật trạng thái nên xảy ra.</li>
+  <li><strong>shouldComponentUpdate</strong>: trả về giá trị true hoặc false. Nó xác định xem các component có được cập nhật hay không. Giá trị mặc định của nó là true. Nếu bạn chắc chắn không muốn component được render lại sau khi state hoặc props được cập nhật thì đặt giá trị cho nó là false.</li>
+  <li><strong>componentDidUpdate</strong>: được gọi ngay sau khi render.</li>
+  <li><strong>componentWillUnmount</strong>: gọi sau khi component được hủy khỏi DOM.</li>
+</ul>
+
+<h3 id="lists--keys">Lists &amp; Keys</h3>
+
+<p>Key rất hữu ích khi làm việc với các component được tạo động hoặc khi danh sách của bạn bị thay đổi bởi người dùng. Việc đặt giá trị key sẽ giữ cho các component được xác định là duy nhất sau khi thay đổi.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">];</span>
+<span class="kd">const</span> <span class="nx">listItems</span> <span class="o">=</span> <span class="nx">numbers</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">number</span><span class="p">)</span> <span class="o">=&gt;</span>
+  <span class="o">&lt;</span><span class="nx">li</span> <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">number</span><span class="p">.</span><span class="nx">toString</span><span class="p">()}</span><span class="o">&gt;</span>
+    <span class="p">{</span><span class="nx">number</span><span class="p">}</span>
+  <span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Không nên sử dụng các chỉ mục cho các khóa nếu thứ tự các mục có thể thay đổi. Điều này có thể tác động không tốt đến hiệu suất và gây ra các vấn đề với state của component.</p>
+
+<p>Lưu ý: Key chỉ có ý nghĩa trong hoàn cảnh mảng xung quanh các phần tử cần đánh key</p>
+
+<h2 id="cuối-cùng">Cuối cùng</h2>
+
+<p>Vì mới tìm hiểu về React nên nội dung chưa được chi tiết lắm. Mình sẽ tìm hiểu thêm và cho ra những bài viết chất lượng hơn. Rất cảm ơn các bạn đã đọc ^^</p>
+
+<p>Thank for reading!</p>
+:ET
