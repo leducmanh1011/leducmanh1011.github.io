@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Tìm hiểu bước đầu về ReactJS"
+title:  "Tìm hiểu bước đầu về ReactJS."
 date:   2020-09-10 10:11:10 +0530
 tags: JS Javascript ReactJS React
 image: post_5/reactjs.png
