@@ -3,7 +3,7 @@ layout: post
 title:  "What is PAT? How to create a personal access token?"
 date:   2021-09-09 10:42:10 +0530
 tags: Grep Linux Command
-image: post_6/github.jpg
+image: post_7/github.jpg
 ---
 
 Có thể các bạn đã biết hay chưa biết hoặc sắp biết thì bắt đầu từ ngày 13 tháng 8 năm 2021, Github không còn chấp nhận mật khẩu toàn khoản khi xác thực các hoạt động Git trên Github.com nữa và thay thế bằng giải pháp là sử dụng PAT. Vậy thì PAT là gì? Làm cách nào để tạo PAT thì mới các bạn đọc hết bài viêt này của mình^^! 
@@ -14,11 +14,12 @@ Có thể các bạn đã biết hay chưa biết hoặc sắp biết thì bắt
 Personal access tokens (PATs) are an alternative to using passwords for authentication to GitHub when using the GitHub API or the command line
 ```
 
+
 PAT là viết tắt của Personal access tokens, nó là một giải pháp thay thế  cho việc sử dụng mật khâu để xác thực cho GitHub khi sử dụng API GitHub hoặc dòng lệnh.
 
 Để phòng ngừa bảo mật, GitHub tự động xóa các mã thông báo truy cập cá nhân không được sử dụng trong một năm. Để cung cấp bảo mật bổ sung, bạn có thể thêm ngày hết hạn vào mã thông báo truy cập cá nhân của mình.
 
-## How to create a personal access token?
+## Tạo một mã PAT như thế nào?
 
 Về cách tạo mã PAT khá là đơn giản, sau đây là hướng dẫn step by step cách tạo mã PAT.
 
@@ -77,9 +78,10 @@ Username: your_username
 Password: your_token
 ```
 
+
 ## Lời kết
 Thanks for reading. Hy vọng bài viết giúp mình cho các bạn :D
 
 Bài viết có tham khảo:
-[GitHub Docs - Create a personal access token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token)
+[GitHub Docs - Create a personal access token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token),
 [GitHub Blog - Token authentication requirements for Git operations](https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/)
