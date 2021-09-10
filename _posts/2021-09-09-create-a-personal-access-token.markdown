@@ -2,7 +2,7 @@
 layout: post
 title:  "What is PAT? How to create a personal access token?"
 date:   2021-09-09 10:42:10 +0530
-tags: Grep Linux Command
+tags: GitHub PAT Personal
 image: post_7/github.jpg
 ---
 
