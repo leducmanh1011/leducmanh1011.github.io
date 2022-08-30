@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Bạn bè
+title: Friend
 permalink: /friends/
 image: 01.jpg
 ---

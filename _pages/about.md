@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Giới thiệu
+title: About
 permalink: /about/
 image: 01.jpg
 ---

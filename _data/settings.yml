@@ -1,8 +1,8 @@
 #-------------------------------
 # General Site Settings
 title: Duc Manh IT Blogs - ROR developer
-logo: logo.svg # You can add own logo.
-favicon: logo.svg
+logo: logo-m.png # You can add own logo.
+favicon: logo-m.png
 description: Code is my life
 
 
@@ -22,7 +22,7 @@ twitter: https://twitter.com/ld_manh # Add your Twitter handle
 facebook: https://facebook.com/ldm.1011
 instagram: https://instagram.com/lleducmanh
 telegram: aa
-linkedin: https://www.linkedin.com/in/le-duc-manh-16a8b31b1/
+linkedin: https://www.linkedin.com/in/manhleducit98
 
 
 #-------------------------------
