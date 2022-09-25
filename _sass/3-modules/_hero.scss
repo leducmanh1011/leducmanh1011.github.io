@@ -15,8 +15,15 @@
     padding: 0 40px 0 0;
     
     .hero__title {
+      display: flex;
       font-size: 38px;
       font-weight: normal;
+      white-space: pre-wrap;
+
+      img {
+        margin-left: 10px;
+        width: 30px;
+      }
     }
 
     .hero__subtitle {
