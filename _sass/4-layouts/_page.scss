@@ -25,6 +25,8 @@
     background-position: center;
     background-repeat: no-repeat;
     background-color: $light-gray;
+    width: 60%;
+    margin: 0 auto;
     &:after {
       content: "";
       display: table;
@@ -58,6 +60,23 @@
       font-weight: 700;
       &:hover {
         color: $black;
+      }
+    }
+  }
+}
+
+.page__content {
+  .about-block-with-logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    gap: 10px;
+
+    &__img {
+      max-width: 100px;
+
+      img {
+        margin: 0;
       }
     }
   }
